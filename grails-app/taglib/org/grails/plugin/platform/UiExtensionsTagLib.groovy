@@ -22,6 +22,7 @@ import org.grails.plugin.platform.util.PluginUtils
 import grails.util.GrailsNameUtils
 
 class UiExtensionsTagLib {
+    static private final String NON_EXISTING_MESSAGE="this message should be never displayed on ui"
 
     static namespace = "p"
 
@@ -271,11 +272,11 @@ class UiExtensionsTagLib {
                 if (log.debugEnabled) {
                     log.debug "Attempting to resolve scoped i18n message code [${namespacedCode}]"
                 }
-                def msg = g.message(code:namespacedCode, args:attrs.args, default:null, encodeAs:attrs.encodeAs)
+                def msg = g.message(code:namespacedCode, args:attrs.args, default:NON_EXISTING_MESSAGE, encodeAs:attrs.encodeAs)
                 if (log.debugEnabled) {
                     log.debug "Attempt to resolve scoped i18n message code [${namespacedCode}] yielded: ${msg}"
                 }
-                if (msg != null) {
+                if (msg != NON_EXISTING_MESSAGE) {
                     if (log.debugEnabled) {
                         log.debug "Resolved scoped i18n message code [${namespacedCode}] and returning ${msg}"
                     }
@@ -298,11 +299,11 @@ class UiExtensionsTagLib {
                 if (log.debugEnabled) {
                     log.debug "Attempting to resolve i18n message code [${code}]"
                 }
-                def msg = g.message(code:code, args:attrs.args, default:null, encodeAs:attrs.encodeAs)
+                def msg = g.message(code:code, args:attrs.args, default:NON_EXISTING_MESSAGE, encodeAs:attrs.encodeAs)
                 if (log.debugEnabled) {
                     log.debug "Attempt to resolve unscoped i18n message code [${code}] yielded: ${msg}"
                 }
-                if (msg != null) {
+                if (msg != NON_EXISTING_MESSAGE) {
                     return msg
                 }
             }
