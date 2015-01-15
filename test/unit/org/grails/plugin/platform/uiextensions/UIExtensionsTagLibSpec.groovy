@@ -36,6 +36,15 @@ class UIExtensionsTagLibSpec extends Specification {
         tagLib.text(code: "empty.message") == ""
     }
 
+    void "test resolve message with specific plugin version"() {
+        setup:
+        tagLib.pageScope['plugin.platformCore.ui.text.scope'] = null
+        tagLib.metaClass.getPluginContextPath = {'/plugins/test-5.4-dev-44-SNAPSHOT'}
+        tagLib.metaClass.pluginManager = [allPlugins: [[fileSystemName: 'test-5.4-dev-44-SNAPSHOT', name: 'test']]]
+        expect:
+        tagLib.text(code: "test.message") == "test msg"
+    }
+
     static void mockMessageTag(artefact, MessageSource messageSource) {
         artefact.metaClass.g = [message: { attrs ->
             messageSource.getMessage(attrs.code, attrs.args as Object[], Locale.ENGLISH)

@@ -32,6 +32,12 @@ class UiExtensionsTagLib {
     def thisYear = new Date()[Calendar.YEAR].toString()
 
     def grailsUiExtensions
+    def pluginManager
+
+    @Lazy
+    private Map<String, String> fileSystemName2PluginNames = {
+        pluginManager.allPlugins.collectEntries {plugin-> [(plugin.fileSystemName): plugin.name]}
+    }()
 
     def label = { attrs, body ->
         out << "<label"
@@ -239,15 +245,12 @@ class UiExtensionsTagLib {
         }
         def i18nscope = attrsToTextScope(attrs) ?: pageScope['plugin.platformCore.ui.text.scope']
         if (!i18nscope) {
-            def pluginPath = pageScope.pluginContextPath
-            def pluginPathMatcher = pluginPath =~ '/plugins/(.+)-[\\d]+.*$'
-            def appPlugin = PluginUtils.findAppPlugin(grailsApplication.mainContext)
-            if (pluginPathMatcher.matches() || appPlugin) {
-                def pluginName = pluginPathMatcher.matches() ?
-                    GrailsNameUtils.getPropertyNameForLowerCaseHyphenSeparatedName(pluginPathMatcher[0][1]) :
-                    appPlugin.name
-                i18nscope = "plugin.${pluginName}"
+            def fileSystemNamePluginName = pluginContextPath - "/plugins/"
+            def pluginName = fileSystemName2PluginNames[fileSystemNamePluginName]
+            if (!pluginName) {
+                pluginName = PluginUtils.findAppPlugin(grailsApplication.mainContext)?.name
             }
+            i18nscope = "plugin.${pluginName}"
         }
 
         def defaultText = attrs.containsKey('default') ? attrs.default : body()
