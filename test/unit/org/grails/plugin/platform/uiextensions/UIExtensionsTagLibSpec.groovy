@@ -39,7 +39,7 @@ class UIExtensionsTagLibSpec extends Specification {
     void "test resolve message with specific plugin version"() {
         setup:
         tagLib.pageScope['plugin.platformCore.ui.text.scope'] = null
-        tagLib.metaClass.getPluginContextPath = {'/plugins/test-5.4-dev-44-SNAPSHOT'}
+        tagLib.pageScope.metaClass.getPluginContextPath = {'/plugins/test-5.4-dev-44-SNAPSHOT'}
         tagLib.metaClass.pluginManager = [allPlugins: [[fileSystemName: 'test-5.4-dev-44-SNAPSHOT', name: 'test']]]
         expect:
         tagLib.text(code: "test.message") == "test msg"

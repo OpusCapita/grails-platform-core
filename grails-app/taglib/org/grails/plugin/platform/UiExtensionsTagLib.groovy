@@ -245,7 +245,7 @@ class UiExtensionsTagLib {
         }
         def i18nscope = attrsToTextScope(attrs) ?: pageScope['plugin.platformCore.ui.text.scope']
         if (!i18nscope) {
-            def fileSystemNamePluginName = pluginContextPath - "/plugins/"
+            def fileSystemNamePluginName = pageScope.getPluginContextPath() - "/plugins/"
             def pluginName = fileSystemName2PluginNames[fileSystemNamePluginName]
             if (!pluginName) {
                 pluginName = PluginUtils.findAppPlugin(grailsApplication.mainContext)?.name
