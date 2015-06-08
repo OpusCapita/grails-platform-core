@@ -15,27 +15,18 @@ grails.project.dependency.resolution = {
         build('org.grails:grails-gdoc-engine:1.0.1') {
             export = false
         }
-
-        test("org.spockframework:spock-grails-support:0.7-groovy-2.0") {
-            export = false
-        }
     }
 
     plugins {
-        build ':release:2.2.0', ':rest-client-builder:1.0.3', {
+        build(':release:3.0.1') {
             export = false
         }
 
-        runtime(":resources:1.2.RC3") {
+        runtime(":resources:1.2.14") {
             export = false
         }
 
-        compile(":hibernate:$grailsVersion"){
-            export = false
-        }
-
-        test(":spock:0.7") {
-            excludes "spock-grails-support"
+        compile(":hibernate:3.6.10.18"){
             export = false
         }
     }

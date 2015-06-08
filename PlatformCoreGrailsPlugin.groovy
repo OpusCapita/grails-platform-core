@@ -30,7 +30,7 @@ import org.grails.plugin.platform.security.SecurityImpl
 import org.grails.plugin.platform.ui.UiExtensions
 
 class PlatformCoreGrailsPlugin {
-    def version = "1.0.RC6-jcatalog-20150121"
+    def version = "1.0.RC6-jcatalog-SNAPSHOT"
     def grailsVersion = "1.3 > *"
     def pluginExcludes = [
             "grails-app/conf/Test*.groovy",
@@ -79,7 +79,7 @@ class PlatformCoreGrailsPlugin {
 
     boolean platformInitialized
 
-    /* 
+    /*
      * Initialize the Configuration API instance
      * We have to do this before anything else runs, e.g. to make sure correct
      * config is available when web.xml is generated, which normally happens before
