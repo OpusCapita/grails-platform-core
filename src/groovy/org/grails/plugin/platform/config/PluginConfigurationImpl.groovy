@@ -406,25 +406,25 @@ class PluginConfigurationImpl implements PluginConfiguration, ApplicationContext
             log.debug "Applying plugin configuration entry ${scopedKey}"
             def value = flatConf[scopedKey]
             if ((value instanceof ConfigObject) && value.size() == 0) {
-                log.debug "Using plugin default value for ${scopedKey}: [${entry.defaultValue}]"
+                log.debug "Using plugin default value for ${scopedKey}: [${entry.defaultValue?.toString()}]"
                 value = entry.defaultValue
                 setConfigValueByPath(scopedKey, value)
             }
 
             if (entry.type && (value != null) && !(value instanceof ConfigObject)) {
                 if (!entry.type.isAssignableFrom(value.getClass())) {
-                    log.error "Invalid plugin configuration value [${value}] for [$scopedKey], reverting to default value [${entry.defaultValue}] - the value in config is not compatible with the type: ${entry.type}"
+                    log.error "Invalid plugin configuration value [${value?.toString()}] for [$scopedKey], reverting to default value [${entry.defaultValue?.toString()}] - the value in config is not compatible with the type: ${entry.type}"
                     setConfigValueByPath(scopedKey, entry.defaultValue)
                 }
             }
 
             // apply validator
             if (entry.validator) {
-                log.debug "Applying plugin config validator for ${scopedKey} to [$value]"
+                log.debug "Applying plugin config validator for ${scopedKey} to [${value?.toString()}]"
                 def msg = entry.validator.call(value)
                 if (msg != null) {
                     // @todo Do we fail fast? Probably not, we may want interaction
-                    log.error "Invalid plugin configuration value for [$scopedKey], reverting to default value [${entry.defaultValue}] - cause: ${msg}"
+                    log.error "Invalid plugin configuration value for [$scopedKey], reverting to default value [${entry.defaultValue?.toString()}] - cause: ${msg}"
                     // Revert to default value
                     setConfigValueByPath(scopedKey, entry.defaultValue)
                 }
