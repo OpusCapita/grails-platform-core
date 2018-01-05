@@ -11,11 +11,11 @@ pipeline {
     agent any
 
     tools {
-        jdk 'jdk7'
+        jdk 'jdk8'
     }
 
     environment {
-        def grailsHome = tool name: 'grails-2.3.8'
+        def grailsHome = tool name: 'grails-2.4.4'
         PATH = "${grailsHome}/bin:${env.PATH}"
     }
 
