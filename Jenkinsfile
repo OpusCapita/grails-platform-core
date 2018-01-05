@@ -15,7 +15,7 @@ pipeline {
     }
 
     environment {
-        def grailsHome = tool name: 'grails-2.4.4'
+        def grailsHome = tool name: 'grails-2.3.8'
         PATH = "${grailsHome}/bin:${env.PATH}"
     }
 
@@ -78,7 +78,6 @@ pipeline {
                 echo "[STAGE] 'Build and deploy docs'"
                 sh "rm -rf plugin.xml"
                 sh "grails doc --offline"
-                sh "grails DocDeploy --offline"
             }
         }
     }
