@@ -3,7 +3,26 @@
     grails.project.repos.grailsCentral.password = System.getenv("GRAILS_CENTRAL_PASSWORD")    
 }**/
 
-grails.project.work.dir = 'target'
+grails.work.dir="target"
+
+coverage {
+    xml = true
+}
+
+codenarc.reports = {
+    DemoApplicationXmlReport('xml') {
+        outputFile = 'target/CodeNarcReport.xml'
+        title = 'Grails CML plugin Codenarc Report'
+    }
+    DemoApplicationHtmlReport('html') {
+        outputFile = 'target/CodeNarcReport.html'
+        title = 'Grails CML plugin Codenarc Report'
+    }
+}
+
+
+grails.project.target.level = 1.8
+grails.project.source.level = 1.8
 
 //grails.project.dependency.resolver='maven'
 grails.project.dependency.resolution = {
@@ -31,6 +50,8 @@ grails.project.dependency.resolution = {
         build ':release:3.0.1', ':rest-client-builder:2.0.1', {
             export = false
         }
+        build('com.jcatalog.grailsplugins:build-process:7.16.GA.1',
+              ':codenarc:0.19')
 
         runtime(":resources:1.2.8") {
             export = false
