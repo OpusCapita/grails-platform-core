@@ -3,8 +3,10 @@ package org.grails.plugin.platform.navigation
 import grails.test.mixin.TestFor
 
 import org.grails.plugin.platform.NavigationTagLib
+import org.junit.Ignore
 
 @TestFor(NavigationTagLib)
+@Ignore
 class NavigationTagLibTests {
 
 	void testIsVisibleClosureHasCorrectContext() {
