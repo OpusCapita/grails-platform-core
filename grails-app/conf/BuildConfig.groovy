@@ -1,21 +1,21 @@
-if(System.getenv('TRAVIS_BRANCH')) {
+/**if(System.getenv('TRAVIS_BRANCH')) {
     grails.project.repos.grailsCentral.username = System.getenv("GRAILS_CENTRAL_USERNAME")
     grails.project.repos.grailsCentral.password = System.getenv("GRAILS_CENTRAL_PASSWORD")    
-}
+}**/
 
 grails.project.work.dir = 'target'
 
-grails.project.dependency.resolver='maven'
+//grails.project.dependency.resolver='maven'
 grails.project.dependency.resolution = {
 
     inherits 'global'
     log 'warn'
 
-    repositories {
+    /**repositories {
         grailsCentral()
         mavenLocal()
         mavenCentral()
-    }
+    }**/
 
     dependencies {
         build('org.grails:grails-gdoc-engine:1.0.1') {
