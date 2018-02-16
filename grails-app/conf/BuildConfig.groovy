@@ -50,7 +50,7 @@ grails.project.dependency.resolution = {
         build ':release:3.0.1', ':rest-client-builder:2.0.1', {
             export = false
         }
-        build('com.jcatalog.grailsplugins:build-process:7.16.GA.1',
+        build('com.jcatalog.grailsplugins:build-process:7.18.GA.4',
               ':codenarc:0.19')
 
         runtime(":resources:1.2.8") {
