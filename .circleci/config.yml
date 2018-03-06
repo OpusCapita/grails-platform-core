@@ -45,9 +45,7 @@ jobs:
             fi
       - save_cache:
           key: 'grails-platform-core-{{ .Branch }}-{{ checksum "grails-app/conf/BuildConfig.groovy" }}'
-          paths:
-            - /root/.grails/.m2
-            - /root/.m2
+          paths: ~/.m2/repository
       
   release:
     <<: *defaults
@@ -59,6 +57,7 @@ jobs:
       - run:
           name: Executing release scrtipt.
           command: .circleci/release.sh
+      
 workflows:
   version: 2
   release-and-build:
