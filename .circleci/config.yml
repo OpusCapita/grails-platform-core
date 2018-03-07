@@ -13,9 +13,9 @@ jobs:
       - checkout
       - restore_cache:
           keys:
-            - 'grails-platform-core-{{ .Branch }}-{{ checksum "grails-app/conf/BuildConfig.groovy" }}'
-            - 'grails-platform-core-{{ .Branch }}'
-            - grails-platform-core
+            - 'v1-grails-platform-core-{{ .Branch }}-{{ checksum "grails-app/conf/BuildConfig.groovy" }}'
+            - 'v1-grails-platform-core-{{ .Branch }}'
+            - v1-grails-platform-core
       - run:
           name: Refresh grails dependencies.
           command: grails refresh-dependencies --non-interactive
@@ -44,7 +44,7 @@ jobs:
               grails DocDeploy --offline --upload-zip-to-google-drive
             fi
       - save_cache:
-          key: 'grails-platform-core-{{ .Branch }}-{{ checksum "grails-app/conf/BuildConfig.groovy" }}'
+          key: 'v1-grails-platform-core-{{ .Branch }}-{{ checksum "grails-app/conf/BuildConfig.groovy" }}'
           paths: ~/.m2/repository
       
   release:
