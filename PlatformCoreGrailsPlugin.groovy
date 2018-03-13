@@ -61,7 +61,7 @@ class PlatformCoreGrailsPlugin {
 	def author = "Grails Plugin Collective"
 	def authorEmail = "grails.plugin.collective@gmail.com"
 	
-	def organization = [name: 'Grails Plugin Collective', url: 'http://github.com/gpc']
+	def organization = [name: "OpusCapita Software GmbH", url: "http://www.opuscapita.com/"]
 	
     def description = 'Grails Plugin Platform Core APIs'
 
@@ -78,7 +78,7 @@ class PlatformCoreGrailsPlugin {
             [name: "Stéphane Maldini", email: "smaldini@gopivotal.com"]
     ]
 
-    def issueManagement = [system: "JIRA", url: "http://jira.grails.org/browse/GPPLATFORMCORE"]
+    def issueManagement = [system: "GitHub", url: "https://github.com/OpusCapita/grails-platform-core/issues"]
 
     def scm = [url: "https://github.com/grails-plugins/grails-platform-core"]
 
