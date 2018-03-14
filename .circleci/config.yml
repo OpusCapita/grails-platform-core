@@ -43,6 +43,9 @@ jobs:
               grails doc --offline
               grails DocDeploy --offline --upload-zip-to-google-drive
             fi
+      - run:
+          name: Remove plugin directory from maven repo.
+          command: rm -rf ~/.m2/repository/org/grails/plugins/platform-core
       - save_cache:
           key: 'v1-grails-platform-core-{{ .Branch }}-{{ checksum "grails-app/conf/BuildConfig.groovy" }}'
           paths: ~/.m2/repository
