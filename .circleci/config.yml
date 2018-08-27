@@ -41,7 +41,7 @@ jobs:
             if [ ! -z "${CIRCLE_TAG}" ]; then
               rm -rf plugin.xml
               grails doc --offline
-              grailsDocDeployToGoogleDrive.sh
+              grailsTechnicalDocumentationRsyncToAzure.sh
             fi
       - run:
           name: Remove plugin directory from maven repo.
