@@ -68,7 +68,7 @@ class PlatformCoreGrailsPlugin {
     def loadBefore = ['core'] // Before rest of beans are initialized
     def loadAfter = ['logging'] // After logging though, we need that
 
-    def documentation = "http://grails-plugins.github.io/grails-platform-core/"
+    def documentation = "http://doc.jcatalog.com/technical-documentation/workarea/docs/${groupId}/platform-core/${version}/guide/single.html"
 
     def license = "APACHE"
 
